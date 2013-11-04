@@ -29,6 +29,7 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
+gem 'will_paginate', '~> 3.0'
 gem 'newrelic_rpm'
 gem 'jquery-rails'
 gem 'faker'
@@ -41,6 +42,7 @@ gem 'carrierwave'
 gem 'fog'
 gem 'figaro'
 gem 'unf'
+
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
