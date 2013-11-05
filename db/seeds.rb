@@ -1,7 +1,7 @@
 require 'faker'
 
 topics = []
-10.times do 
+15.times do 
 	topics << Topic.create(
 		name: Faker::Lorem.words(rand(1..10)).join(" "),
 		description: Faker::Lorem.paragraph(rand(1..4))
@@ -20,11 +20,11 @@ rand(4..10).times do
 	u.save
 
 
-	rand(5..12).times do
+	rand(11..20).times do
 		topic = topics.first
 		p = u.posts.create(
 			topic: topic,
-			title: Faker::Lorem.words(rand(1..10)).join(" "),
+			title: Faker::Lorem.words(rand(1..5)).join(" "),
 			body: Faker::Lorem.paragraphs(rand(1..4)).join("\n"))
 			p.update_attribute(:created_at, Time.now - rand(600..31536000))
 
@@ -71,6 +71,7 @@ u.save
 
 
 puts "Seed Finished"
-puts "#{Post.count} post created"
+puts "#{Topic.count} topics created"
+puts "#{Post.count} posts created"
 puts "#{Comment.count} comments created"
 puts "#{User.count} users created"
