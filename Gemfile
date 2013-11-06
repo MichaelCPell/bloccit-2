@@ -42,6 +42,7 @@ gem 'carrierwave'
 gem 'fog'
 gem 'figaro'
 gem 'unf'
+gem 'omniauth-facebook'
 
 
 # To use ActiveModel has_secure_password
