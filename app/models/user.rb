@@ -10,6 +10,9 @@ class User < ActiveRecord::Base
   before_create :set_member
   mount_uploader :avatar, AvatarUploader 
 
+  #Add user comments 
+  has_many :comments 
+
 
   #CanCan roles
   ROLES = %w[member moderator admin]
