@@ -9,6 +9,7 @@ class Ability
     if user.role? :member
       can :manage, Post, :user_id => user.id
       can :manage, Comment, :user_id => user.id
+      can :destroy, Comment, :user_id => user.id 
     end
 
     # Moderators can delete any post

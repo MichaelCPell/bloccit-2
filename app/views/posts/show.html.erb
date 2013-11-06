@@ -1,4 +1,8 @@
-<h1><%= markdown @post.title %></h1>
+<h1><%= markdown @post.title %>
+<% if can? :destroy, @post %>
+  <%= link_to "Destroy", [@topic, @post], method: :delete, class: "btn btn-danger btn-mini", confirm: "Are you sure?" %>
+<% end %>
+</h1>
 <div class="row">
   <div class="span8">
     <small>
@@ -25,7 +29,8 @@
   <div class="span4">
     <% if can? :edit, @post %>
       <%= link_to "Edit", edit_topic_post_path(@topic, @post), class: 'btn btn-large btn-block' %>
-
     <% end %>
+
+
   </div>
 </div>

@@ -33,12 +33,26 @@ class TopicsController < ApplicationController
 
   def update
   	@topic = Topic.find(params[:id])
-    authorize! :update, @topic, message: "you need to be an admin"
+    authorize! :update, @topic, message: "You need to be an admin."
   	if @topic.update_attributes(params[:topic])
   		redirect_to @topic
   	else
   		flash[:error] = "Error updating topic. Please try again"
   		render :edit
   	end
+  end
+
+  def destroy
+    @topic = Topic.find(params[:id])
+    name = @topic.name
+
+    authorize! :destory, @topic, message: "You need to own topic to delete."
+    if @topic.destroy
+      flash[:notice] = "#{name} was deleted successfully"
+      redirect_to [@topic]
+    else
+      flash[:error] = "There was an error deleteing topic"
+      render :show 
+    end
   end
 end

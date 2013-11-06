@@ -2,6 +2,9 @@
 	<% if can? :update, @topic %>
 		<%= link_to "Edit", edit_topic_path, class: "btn btn-primary btn-mini" %>
 	<% end %>
+	<% if can? :destroy, @topic %>
+		<%= link_to "Delete", @topic, method: :delete, class: "btn btn-mini btn-danger", confirm: "Are you sure?" %>
+	<% end %>
 </h1>
 
 <div class="row">
@@ -29,5 +32,6 @@
 		<% if can? :create, Post %> 
 			<%= link_to "New Post", new_topic_post_path(@topic), class: "btn btn-large btn-block" %>
 		<%end%>
+
 	</div>
 </div>

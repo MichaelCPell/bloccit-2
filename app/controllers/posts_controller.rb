@@ -1,6 +1,4 @@
 class PostsController < ApplicationController
-
-
   def show    
     @post  = Post.find(params[:id]) 
     @topic = Topic.find(params[:topic_id])
@@ -46,5 +44,22 @@ class PostsController < ApplicationController
         flash[:error] = "There was an error, the post was not updated "
         render :new
       end
+  end
+
+  def destroy
+    @topic = Topic.find(params[:topic_id])
+    @post = Post.find(params[:id])
+    
+    title = @post.title
+
+    authorize! :destroy, @post, message: "You must own this post to destroy"
+    if @post.destroy
+      flash[:notice] = "#{title} was destroyed"
+      redirect_to @topic
+    else
+      flash[:error] = "There was an error deleting post"
+      render :show 
+    end
+
   end
 end
