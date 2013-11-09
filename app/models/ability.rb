@@ -4,10 +4,8 @@ class Ability
   def initialize(user)
     user ||= User.new # guest user
 
-    # if a member, they can manage their own posts 
-    # (or create new ones)
+    # if a member, they can manage their own posts (or create new ones)
     if user.role? :member
-      #can :manage, Topic #, :user_id => user.id
       can :manage, Post, :user_id => user.id
       can :manage, Comment, :user_id => user.id
       can :destroy, Comment, :user_id => user.id 

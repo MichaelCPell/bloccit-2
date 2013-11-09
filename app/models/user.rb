@@ -37,6 +37,10 @@ class User < ActiveRecord::Base
     self.favorites.where(post_id: post.id).first
   end
 
+  def voted(post)
+    self.votes.where(post_id: post.id).first 
+  end
+
 
   #CanCan roles
   ROLES = %w[member moderator admin]
