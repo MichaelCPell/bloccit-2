@@ -1,5 +1,5 @@
 class Post < ActiveRecord::Base
-  attr_accessible :body, :title, :topic, :postimage, :rank 
+  attr_accessible :body, :title, :topic, :postimage, :rank
   validates :title, length: { minimum: 5 }, presence: true 
   validates :body, length: { minimum: 20 }, presence: true 
   validates :user, presence: true
@@ -10,6 +10,7 @@ class Post < ActiveRecord::Base
 
   has_many :comments, dependent: :destroy 
   has_many :votes, dependent: :destroy
+  has_many :favorites, dependent: :destroy
 
   after_create :create_vote
 
@@ -33,7 +34,7 @@ class Post < ActiveRecord::Base
 
   def update_rank
     age = (self.created_at - Time.new(1970,1,1)) / 86400
-    new_rank = points + age
+    new_rank = self.points + age
 
     self.update_attribute(:rank, new_rank)
   end
