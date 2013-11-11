@@ -53,7 +53,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.6.3)
-    devise (3.1.1)
+    devise (3.2.0)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.1)
       railties (>= 3.2.6, < 5)
@@ -103,7 +103,7 @@ GEM
     net-scp (1.1.2)
       net-ssh (>= 2.6.5)
     net-ssh (2.7.0)
-    newrelic_rpm (3.6.8.168)
+    newrelic_rpm (3.6.9.171)
     nokogiri (1.6.0)
       mini_portile (~> 0.5.0)
     nokogiri (1.6.0-x86-mingw32)
@@ -174,7 +174,7 @@ GEM
       polyglot
       polyglot (>= 0.3.1)
     tzinfo (0.3.38)
-    uglifier (2.3.0)
+    uglifier (2.3.1)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
     unf (0.1.3)

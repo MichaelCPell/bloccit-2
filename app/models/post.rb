@@ -17,6 +17,7 @@ class Post < ActiveRecord::Base
   mount_uploader :postimage, PostImageUploader 
   
   default_scope order('rank DESC')
+  scope :visible_to, lambda { |user| user ? scoped : joins(:topic).where('topics.public' => true) }
 
   
 
