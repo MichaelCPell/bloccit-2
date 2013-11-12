@@ -5,9 +5,11 @@ gem 'rails', '3.2.13'
 # Bundle edge Rails instead:
 # gem 'rails', :g
 
-group :development do
+group :development, :test do
   gem 'sqlite3'
   gem 'better_errors'
+  gem 'rspec-rails'
+  gem 'factory_girl_rails', '~> 4.0'
 end
 
 group :production do 
