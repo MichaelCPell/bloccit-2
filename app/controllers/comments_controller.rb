@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
   respond_to :html, :js 
-  
+
   def create
     @topic = Topic.find(params[:topic_id])
     @post = @topic.posts.find(params[:post_id])
@@ -8,14 +8,17 @@ class CommentsController < ApplicationController
 
     @comment = current_user.comments.build(params[:comment])
     @comment.post = @post 
+    @new_comment = Comment.new 
 
     authorize! :create, @comment, message: "You need to be signed in"
     if @comment.save
       flash[:notice] = "Comment was created"
-      redirect_to [@topic, @post]
     else
       flash[:error] = "Comment was not saved. Pleease try again"
-      render 'post/show'
+    end
+
+    respond_with(@comment) do |f|
+      f.html { redirect_to [@topic, @post]}
     end
   end
 
@@ -35,7 +38,7 @@ class CommentsController < ApplicationController
     end
 
     respond_with(@comment) do |f| 
-      f.html { redirect_to [@topic, @topic] }
+      f.html { redirect_to [@topic, @post] }
     end
   end
   
