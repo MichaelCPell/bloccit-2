@@ -28,7 +28,8 @@
   
   <hr/>
 
-  <h2><%= @comments.count %> Comments </h2>
+  <h2 class="js-comments-count"><%= @comments.count %> Comments</h2>
+
   <%= render partial: "comments/comment", collection: @comments %>
 
   <% if can? :create, Comment %>
@@ -42,14 +43,12 @@
       <%= render partial: 'comments/form', locals: { topic: @topic, post: @post, comment: @comment } %>
     </div>
   <% end %>
-
   
   </div>
   <div class="span4">
     <% if can? :edit, @post %>
       <%= link_to "Edit", edit_topic_post_path(@topic, @post), class: 'btn btn-large btn-block' %>
     <% end %>
-
-
   </div>
+
 </div>
